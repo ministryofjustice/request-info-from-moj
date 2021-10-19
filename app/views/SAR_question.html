@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/url/of/next/page" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "changed-name",
+  name: "changed-name",
+  fieldset: {
+    legend: {
+      text: "Do you want to see personal information the MOJ is holding?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "This can be for you, someone else you know, or someone you're representing."
+  },
+  items: [
+    {
+      value: "yes~/work_for_moj_question",
+      text: "Yes"
+    },
+    {
+      value: "no~/step-by-step-navigation",
+      text: "No"
+    }
+  ]
+}) }}
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
